@@ -28,12 +28,12 @@ namespace WindowsFormsApp2
 
         
             // este IF não está funcionando
-                 if (txtbase.Text == "" || txtaltura.Text == "")
+                 if (txtbase.Text == 0 || txtaltura.Text == 0 || txtbase.Text < 0 || txtaltura < 0)
             {
 
                 valor1 = 0;
                 valor2 = 0;
-                lblAviso.Text = "Favor insira os valores para começar a operação";
+                lblAviso.Text = "Favor insira os valores válidos para começar a operação";
                 lblAviso.Visible = true;
 
             }
@@ -62,7 +62,13 @@ namespace WindowsFormsApp2
                 double Resultado = valor1 * valor2;
                 txtResult.Text = Convert.ToString(Resultado);
             }
-            
+            else
+                 if (rdbTriangulo.Checked == true)
+            {
+                lblAviso.Visible = false;
+                double Resultado = (valor1 * valor2)/2;
+                txtResult.Text = Convert.ToString(Resultado);
+            }
             else
                 if (rdbQuadrado.Checked == false && rdbRetangulo.Checked == false && rdbTriangulo.Checked == false && rdbCirculo.Checked == false)
             {
@@ -70,8 +76,6 @@ namespace WindowsFormsApp2
                 lblAviso.Visible = true;
 
             }
-
-
         }
     
 
