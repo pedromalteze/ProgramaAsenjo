@@ -20,19 +20,21 @@ namespace WindowsFormsApp2
         private void btnCalc_Click(object sender, EventArgs e)
         {
 
-           
-                double valor1, valor2;
+           \\adicionei o valor 3 para o raio do circulo
+                double valor1, valor2, valor3;
 
                 valor1 = double.Parse(txtbase.Text);
                 valor2 = double.Parse(txtaltura.Text);
+                valor3= double.Parse(txtraio.Text);
 
         
             // este IF não está funcionando
-                 if (txtbase.Text == 0 || txtaltura.Text == 0 || txtbase.Text < 0 || txtaltura < 0)
+                 if (txtbase.Text == 0 || txtaltura.Text == 0 || txtraio.Text == 0 || txtbase.Text < 0|| txtaltura.Text < 0 || txtraio < 0)
             {
 
                 valor1 = 0;
                 valor2 = 0;
+                valor3 = 0;
                 lblAviso.Text = "Favor insira os valores válidos para começar a operação";
                 lblAviso.Visible = true;
 
@@ -70,6 +72,13 @@ namespace WindowsFormsApp2
                 txtResult.Text = Convert.ToString(Resultado);
             }
             else
+                 if (rdbCirculo.Checked == true)
+            {
+                lblAviso.Visible = false;
+                double Resultado = 3.14 * Math.Pow (valor3,2.0);
+                txtResult.Text = Convert.ToString(Resultado);
+            }
+            else
                 if (rdbQuadrado.Checked == false && rdbRetangulo.Checked == false && rdbTriangulo.Checked == false && rdbCirculo.Checked == false)
             {
                 lblAviso.Text = "Favor selecionar uma caixa para efetuar a operação";
@@ -86,13 +95,16 @@ namespace WindowsFormsApp2
             lblAviso.Text = " ";
             txtaltura.Text = "";
             txtbase.Text = "";
+            txtraio.Text = "";
             txtResult.Text = "";
             txtaltura.Text = "0";
             txtbase.Text = "0";
+            txtraio.Text = "0";
  
             rdbQuadrado.Checked = false;
             rdbTriangulo.Checked = false;
             rdbRetangulo.Checked = false;
+            rdbCirculo.Checked = false;
         }
     }
 }
