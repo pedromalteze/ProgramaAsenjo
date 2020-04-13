@@ -21,33 +21,37 @@ namespace WindowsFormsApp2
         {
 
            
-                double valor1, valor2;
+                // adicionei o valor 3 para o raio do círculo
+                duplo valor1, valor2, valor3;
 
-                valor1 = double.Parse(txtbase.Text);
-                valor2 = double.Parse(txtaltura.Text);
+                valor1 = double.Parse (txtbase.Text);
+                valor2 = double.Parse (txtaltura.Text);
+                valor3 = double.Parse (txtraio.Text);
 
         
             // este IF não está funcionando
-                 if (txtbase.Text == 0 || txtaltura.Text == 0 || txtbase.Text < 0 || txtaltura < 0)
+              // adicionei o txtraio no If e o valor3 = 0
+                if (txtbase.Text == 0 || txtaltura.Text == 0 || txtraio.Text == 0 || txtbase.Text <0 || txtaltura.Text <0 || txtraio <0)
             {
 
                 valor1 = 0;
                 valor2 = 0;
-                lblAviso.Text = "Favor insira os valores válidos para começar a operação";
+                valor3 = 0;
+                lblAviso.Text = "Favor inserir valores válidos para iniciar uma operação";
                 lblAviso.Visible = true;
 
             }
-            else
+            outro
             
                  if (rdbQuadrado.Checked == true && valor1 == valor2)
             
             {
                 lblAviso.Visible = false;
                 double Resultado = valor1 * valor1;
-                txtResult.Text = Convert.ToString(Resultado);
+                txtResult.Text = Convert.ToString (Resultado);
             }
-            else
-                 if (rdbQuadrado.Checked == true  && valor1 != valor2)
+            outro
+                 if (rdbQuadrado.Checked == true && valor1! = valor2)
 
             {
                 lblAviso.Visible = true;
@@ -55,24 +59,32 @@ namespace WindowsFormsApp2
 
             }
             
-            else
+            outro
                  if (rdbRetangulo.Checked == true)
             {
                 lblAviso.Visible = false;
                 double Resultado = valor1 * valor2;
-                txtResult.Text = Convert.ToString(Resultado);
+                txtResult.Text = Convert.ToString (Resultado);
             }
-            else
+            outro
                  if (rdbTriangulo.Checked == true)
             {
                 lblAviso.Visible = false;
-                double Resultado = (valor1 * valor2)/2;
-                txtResult.Text = Convert.ToString(Resultado);
+                double Resultado = (valor1 * valor2) / 2;
+                txtResult.Text = Convert.ToString (Resultado);
             }
-            else
+            outro
+             // Se o círculo da área do círculo
+                 if (rdbCirculo.Checked == true)
+            {
+                lblAviso.Visible = false;
+                double Resultado = 3,14 * Math.Pow (valor3,2.0);
+                txtResult.Text = Convert.ToString (Resultado);
+            }
+            outro
                 if (rdbQuadrado.Checked == false && rdbRetangulo.Checked == false && rdbTriangulo.Checked == false && rdbCirculo.Checked == false)
             {
-                lblAviso.Text = "Favor selecionar uma caixa para efetuar a operação";
+                lblAviso.Text = "Favor selecionar uma caixa para executar a operação";
                 lblAviso.Visible = true;
 
             }
@@ -81,18 +93,21 @@ namespace WindowsFormsApp2
 
 
 
-        private void btnlimpar_Click(object sender, EventArgs e)
+        private void btnlimpar_Click (remetente do objeto, EventArgs e)
         {
-            lblAviso.Text = " ";
+            lblAviso.Text = "";
             txtaltura.Text = "";
             txtbase.Text = "";
+            txtraio.Text = "";
             txtResult.Text = "";
             txtaltura.Text = "0";
             txtbase.Text = "0";
- 
+            txtraio.Text = "0";
+
             rdbQuadrado.Checked = false;
             rdbTriangulo.Checked = false;
             rdbRetangulo.Checked = false;
+            rdbCirculo.Checked = false;
         }
     }
 }
