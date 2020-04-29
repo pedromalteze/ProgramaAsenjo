@@ -27,7 +27,7 @@ namespace WindowsFormsApp2
             valor2 = double.Parse(txtaltura.Text);
 
             //-----------------------------------------------------------
-            // este IF não está funcionando
+            
             if (txtbase.Text == "" || txtaltura.Text == "")
             {
 
